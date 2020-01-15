@@ -41,9 +41,15 @@ class PalindromeTestForm extends FormBase {
    * {@inheritdoc}
    */
   public function validateForm(array &$form, FormStateInterface $form_state) {
-    foreach ($form_state->getValues() as $key => $value) {
-      // @TODO: Validate fields.
-    }
+    
+    $word = $form_state->getValue('word');
+    // Check if value is equal to its reverse
+    if (strrev($word) == $word) {   
+      $form_state->setErrorByName('word', $this->t('This is a palindrome!'));   
+    } 
+    else { 
+      $form_state->setErrorByName('word', $this->t('Sorry, this is not palindrome!')); 
+    } 
     parent::validateForm($form, $form_state);
   }
 
@@ -58,3 +64,4 @@ class PalindromeTestForm extends FormBase {
   }
 
 }
+
