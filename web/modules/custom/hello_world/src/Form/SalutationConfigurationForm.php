@@ -39,6 +39,16 @@ class SalutationConfigurationForm extends ConfigFormBase {
 
     return parent::buildForm($form, $form_state);
   }
+  
+  /**
+   * {@inheritdoc}
+   */
+  public function validateForm(array &$form, FormStateInterface $form_state) {
+    $salutation = $form_state->getValue('salutation');
+    if (strlen($salutation) > 20) {
+      $form_state->setErrorByName('salutation', $this->t('This salutation is too long.'));
+    }
+  }
 
   /**
    * {@inheritdoc}
