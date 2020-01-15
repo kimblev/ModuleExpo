@@ -1,0 +1,7 @@
+palindrome_test.palindrome_test_form:
+  path: '/palindrome_test/form/palindrome_test'
+  defaults:
+    _form: '\Drupal\palindrome_test\Form\PalindromeTestForm'
+    _title: 'PalindromeTestForm'
+  requirements:
+    _access: 'TRUE'

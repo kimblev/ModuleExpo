@@ -1,0 +1,24 @@
+<?php
+
+/**
+ * @file
+ * Contains palindrome_test.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function palindrome_test_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the palindrome_test module.
+    case 'help.page.palindrome_test':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Test if a word is a palindrome (spelled the same frontwards or backwards).') . '</p>';
+      return $output;
+
+    default:
+  }
+}
