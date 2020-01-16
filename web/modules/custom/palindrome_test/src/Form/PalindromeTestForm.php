@@ -52,16 +52,13 @@ class PalindromeTestForm extends FormBase {
    */
   public function submitForm(array &$form, FormStateInterface $form_state) {
     // Display result.
-    /*foreach ($form_state->getValues() as $key => $value) {
-      \Drupal::messenger()->addMessage($key . ': ' . ($key === 'text_format'?$value['value']:$value));
-    }*/
     $word = strtoupper($form_state->getValue('word'));
     // Check if value is equal to its reverse
     // and assign the proper message.
-    if (strrev($word) == $word) {
+    if (strrev($word) == $word && !empty($word)) {
       $prefix = "(-: ";
       $msg = $this->t(' is a palindrome!');   
-    } 
+    }
     else { 
       $prefix = ")-: ";
       $msg = $this->t(' is not palindrome!'); 
