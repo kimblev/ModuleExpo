@@ -1,6 +1,7 @@
 <?php
 
 use Drupal\Core\Routing\RouteMatchInterface;
+use Drupal\Core\Form\FormStateInterface;
 
 /**
  * Implements hook_help().
@@ -15,3 +16,22 @@ function hello_world_help($route_name, RouteMatchInterface $route_match) {
     default:
   }
 }
+
+/**
+ * Implements hook_form_FORM_ID_alter().
+ */
+function hello_world_form_salutation_configuration_form_alter(&$form, \Drupal\Core\Form\FormStateInterface $form_state, $form_id) {
+  //Perform alterations.
+  $form['#submit'][] = 'hello_world_salutaton_configuration_form_submit';
+  /**
+   * Custom submit handler for the form_salutation_configuration_form.
+   * 
+   * @param $form
+   * @param \Drupal\Core\Form\FormStateInterface $form_state
+   */
+  function hello_world_salutation_configuration_form_submit (&$form, \Drupal\Core\Form\FormStateInterface $form_state) {
+    // Do something when the form is submitted.
+  }
+}
+
+
