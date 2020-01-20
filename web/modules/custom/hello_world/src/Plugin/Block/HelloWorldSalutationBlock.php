@@ -4,7 +4,7 @@ namespace Drupal\hello_world\Plugin\Block;
 
 use Drupal\Core\Block\BlockBase;
 use Drupal\Core\Plugin\ContainerFactoryPluginInterface;
-use Symphony\Component\DependencyInjection\ContainerInterface;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 use Drupal\hello_world\HelloWorldSalutation as HelloWorldSalutationService;
 
 /**
@@ -16,6 +16,7 @@ use Drupal\hello_world\HelloWorldSalutation as HelloWorldSalutationService;
  * )
  */
 class HelloWorldSalutationBlock extends BlockBase implements ContainerFactoryPluginInterface {
+	
 	/**
 	 * The salutation service.
 	 * 
@@ -35,7 +36,7 @@ class HelloWorldSalutationBlock extends BlockBase implements ContainerFactoryPlu
 	 * @param \Drupal\hello_world\HelloWorldSalutation $salutation
 	 *   The salutation service.
 	 */
-	public function __construct(array $configuration, $plugin_id, $plugin_definition, \HelloWorldSalutationService $salutation) {
+	public function __construct(array $configuration, $plugin_id, $plugin_definition, HelloWorldSalutationService $salutation) {
 		parent::__construct($configuration, $plugin_id, $plugin_definition);
 		$this->salutation = $salutation;
 	}
