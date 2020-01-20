@@ -58,7 +58,7 @@ class SalutationConfigurationForm extends ConfigFormBase {
       ->set('salutation', $form_state->getValue('salutation'))
       ->save();
     
-    return parent::submitForm($form, $form_state);
+    parent::submitForm($form, $form_state);
   }
 
 }
