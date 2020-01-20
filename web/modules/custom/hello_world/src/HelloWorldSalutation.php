@@ -24,15 +24,14 @@ class HelloWorldSalutation {
    * @param \Drupal\Core\Config\ConfigFactoryInterface $config_factory
    */
   public function __construct(ConfigFactoryInterface $config_factory) {
-
-    $this->$configFactory = $config_factory;
+    $this->configFactory = $config_factory;
   }
 
   /**
    * Returns the salutation.
    */
   public function getSalutation() {
-    $config = $this->$configFactory->get('hello_world.custom_salutation');
+    $config = $this->configFactory->get('hello_world.custom_salutation');
     $salutation = $config->get('salutation');
     if ($salutation != "") {
       return $salutation;
