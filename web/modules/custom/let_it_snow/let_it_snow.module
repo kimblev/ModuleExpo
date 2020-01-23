@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains let_it_snow.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function let_it_snow_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the let_it_snow module.
+    case 'help.page.let_it_snow':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Let It Snow is a JavaScript-driven snow effect module that can be easily added to web pages. It uses and is dependent upon snowstorm.js written and maintained by Scott Schiller (schillmania.com). No images are used for the snow effect.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function let_it_snow_theme() {
+  return [
+    'let_it_snow' => [
+      'render element' => 'children',
+    ],
+  ];
+}
