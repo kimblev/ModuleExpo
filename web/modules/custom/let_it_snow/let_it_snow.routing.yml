@@ -1,5 +1,5 @@
 let_it_snow.settings:
-  path: '/admin/let_it_snow/settings'
+  path: '/admin/config/let_it_snow'
   defaults:
     _form: '\Drupal\let_it_snow\Form\LetItSnowSettingsForm'
     _title: 'Let It Snow settings'

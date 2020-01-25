@@ -26,10 +26,19 @@ function let_it_snow_help($route_name, RouteMatchInterface $route_match) {
 /**
  * Implements hook_theme().
  */
+/*  I don't know where this came from ???
 function let_it_snow_theme() {
   return [
     'let_it_snow' => [
       'render element' => 'children',
     ],
   ];
+}*/
+
+/**
+ * Implements hook_page_attachments().
+ */
+function let_it_snow_page_attachments(array &$page) {
+  $page['#attached']['library'][] = 'let_it_snow/let_it_snow';
+  $page['#attached']['library'][] = 'let_it_snow/let_it_snow_config';
 }
