@@ -1,0 +1,7 @@
+let_it_snow:
+  version: 1.x
+  header: true
+  js:
+    js/snowstorm.js: {}
+  dependencies:
+    - core/drupalSettings
