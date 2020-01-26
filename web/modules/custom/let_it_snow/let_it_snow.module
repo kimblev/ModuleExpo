@@ -41,4 +41,15 @@ function let_it_snow_theme() {
 function let_it_snow_page_attachments(array &$page) {
   $page['#attached']['library'][] = 'let_it_snow/let_it_snow';
   $page['#attached']['library'][] = 'let_it_snow/let_it_snow_config';
+  
+  $snow_config = \Drupal::config('let_it_snow.settings');
+  $autoStart = $snow_config->get('autoStart');
+  $targetElement = $snow_config->get('targetElement');
+  $snowColor = $snow_config->get('snowColor');
+  $animationInterval = $snow_config->get('animationInterval');
+  $flakeBottom = $snow_config->get('flakeBottom');
+  $flakesMax = $snow_config->get('flakesMax');
+  
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['snowColor'] = $snowColor;
+  //return $snow_config;
 }

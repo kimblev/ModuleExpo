@@ -1,5 +1,7 @@
 (function ($, Drupal, drupalSettings) {
-  return  "snowStorm.snowColor = '#c00';";
+  //snowStorm.snowColor = '#000';
 }(jQuery, Drupal, drupalSettings));
-// Snow is getting red from the below statement, but not the above???
-snowStorm.snowColor = '#c00';
+
+snowStorm.snowColor = '#f00';
+//snowStorm.snowColor = drupalSettings.letItSnow.letItSnowConfig.snowColor;
+//snowStorm.flakesMax = drupalSettings.letItSnow.letItSnowConfig.snow_config.flakesMax;
