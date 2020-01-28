@@ -51,9 +51,9 @@ function let_it_snow_page_attachments(array &$page) {
   if ($autoStart == true) {
     $page['#attached']['library'][] = 'let_it_snow/let_it_snow';
     $page['#attached']['library'][] = 'let_it_snow/let_it_snow_config';
+  } else {
+    return false;
   }
-
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['autoStart'] = FALSE;
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['snowColor'] = $snowColor;
-
 }
