@@ -1,7 +1,3 @@
 (function ($, Drupal, drupalSettings) {
-  //snowStorm.snowColor = '#000';
+  snowStorm.snowColor = '#00f';
 }(jQuery, Drupal, drupalSettings));
-
-snowStorm.snowColor = '#f00';
-//snowStorm.snowColor = drupalSettings.letItSnow.letItSnowConfig.snowColor;
-//snowStorm.flakesMax = drupalSettings.letItSnow.letItSnowConfig.snow_config.flakesMax;
