@@ -1,3 +1,3 @@
 (function ($, Drupal, drupalSettings) {
-  snowStorm.snowColor = '#00f';
+  snowStorm.snowColor = drupalSettings.letItSnow.letItSnowConfig.snowColor;
 }(jQuery, Drupal, drupalSettings));
