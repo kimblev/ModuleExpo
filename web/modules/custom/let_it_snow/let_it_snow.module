@@ -43,10 +43,11 @@ function let_it_snow_page_attachments(array &$page) {
   $snow_config = \Drupal::config('let_it_snow.settings');
   $autoStart = $snow_config->get('autoStart');
   $targetElement = $snow_config->get('targetElement');
-  $snowColor = $snow_config->get('snowColor');
   $animationInterval = $snow_config->get('animationInterval');
   $flakeBottom = $snow_config->get('flakeBottom');
   $flakesMax = $snow_config->get('flakesMax');
+  $flakesMaxActive = $snow_config->get('flakesMaxActive');
+  $snowColor = $snow_config->get('snowColor');
 
   if ($autoStart == true) {
     $page['#attached']['library'][] = 'let_it_snow/let_it_snow';
@@ -54,6 +55,11 @@ function let_it_snow_page_attachments(array &$page) {
   } else {
     return false;
   }
-  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['autoStart'] = FALSE;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['autoStart'] = $autoStart;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['targetElement'] = $targetElement;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['animationInterval'] = $animationInterval;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['flakeBottom'] = $flakeBottom;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['flakesMax'] = $flakesMax;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['flakesMaxActive'] = $flakesMaxActive;
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['snowColor'] = $snowColor;
 }

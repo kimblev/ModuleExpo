@@ -18,10 +18,11 @@ class LetItSnowSettingsForm extends ConfigFormBase {
         $snow_config = \Drupal::config('let_it_snow.settings');
         $autoStart = $snow_config->get('autoStart');
         $targetElement = $snow_config->get('targetElement');
-        $snowColor = $snow_config->get('snowColor');
         $animationInterval = $snow_config->get('animationInterval');
         $flakeBottom = $snow_config->get('flakeBottom');
         $flakesMax = $snow_config->get('flakesMax');
+        $flakesMaxActive = $snow_config->get('flakesMaxActive');
+        $snowColor = $snow_config->get('snowColor');
         
         $form['snow_settings'] = [
             '#type' => 'fieldset',
@@ -43,8 +44,8 @@ class LetItSnowSettingsForm extends ConfigFormBase {
         $form['snow_settings']['enable']['targetElement'] = [
             '#type' => 'textfield',
             '#title' => $this
-              ->t('Enter a target div ID'),
-             '#default_value' => $targetDiv ?: '#header',
+              ->t('Enter a target element'),
+             '#default_value' => $targetElement,
         ];
         $form['snow_settings']['properties'] = [
             '#type' => 'fieldset',
@@ -52,12 +53,6 @@ class LetItSnowSettingsForm extends ConfigFormBase {
               ->t('Snow properties*'),
             '#description' => $this
               ->t('*Most values will acquire a default value if left blank or an invalid value is entered.')
-        ];
-        $form['snow_settings']['properties']['snowColor'] = [
-            '#type' => 'textfield',
-            '#title' => $this
-                ->t('Snow color'),
-            '#default_value' => $snowColor ?: '#fff',
         ];
         $form['snow_settings']['properties']['animationInterval'] = [
             '#type' => 'textfield',
@@ -72,13 +67,37 @@ class LetItSnowSettingsForm extends ConfigFormBase {
             '#type' => 'textfield',
             '#title' => $this
                 ->t('Flake bottom'),
+            '#description' => $this
+                ->t('Limits the "floor" (pixels) of the snow. If unspecified, snow will 
+                "stick" to the bottom of the browser window and persists through browser 
+                resize/scrolling.'),
             '#default_value' => $flakeBottom ?: '',
         ];
         $form['snow_settings']['properties']['flakesMax'] = [
             '#type' => 'textfield',
             '#title' => $this
                 ->t('Flakes max'),
+            '#description' => $this
+                ->t('Sets the maximum number of snowflakes that can exist on the screen at 
+                any given time.'),
             '#default_value' => $flakesMax ?: 128,
+        ];
+        $form['snow_settings']['properties']['flakesMaxActive'] = [
+            '#type' => 'textfield',
+            '#title' => $this
+                ->t('Flakes max active'),
+            '#description' => $this
+                ->t('Sets the limit of "falling" snowflakes (ie. moving on the screen, thus 
+                considered to be active.)'),
+            '#default_value' => $flakesMaxActive ?: 64,
+        ];
+        $form['snow_settings']['properties']['snowColor'] = [
+            '#type' => 'textfield',
+            '#title' => $this
+                ->t('Snow color'),
+            '#description' => $this
+                ->t("Don't eat (or use?) yellow snow."),
+            '#default_value' => $snowColor ?: '#fff',
         ];
         return parent::buildForm($form, $form_state);
     }
@@ -88,10 +107,11 @@ class LetItSnowSettingsForm extends ConfigFormBase {
         $this->config('let_it_snow.settings')
           ->set('autoStart', $values['autoStart'])
           ->set('targetElement', $values['targetElement'])
-          ->set('snowColor', $values['snowColor'])
           ->set('animationInterval', $values['animationInterval'])
           ->set('flakeBottom', $values['flakeBottom'])
           ->set('flakesMax', $values['flakesMax'])
+          ->set('flakesMaxActive', $values['flakesMaxActive'])
+          ->set('snowColor', $values['snowColor'])
           ->save();
     }
 }
