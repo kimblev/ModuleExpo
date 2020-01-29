@@ -47,6 +47,8 @@ function let_it_snow_page_attachments(array &$page) {
   $flakeBottom = $snow_config->get('flakeBottom');
   $flakesMax = $snow_config->get('flakesMax');
   $flakesMaxActive = $snow_config->get('flakesMaxActive');
+  $followMouse = $snow_config->get('followMouse');
+  $freezeOnBlur = $snow_config->get('freezeOnBlur');
   $snowColor = $snow_config->get('snowColor');
 
   if ($autoStart == true) {
@@ -61,5 +63,7 @@ function let_it_snow_page_attachments(array &$page) {
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['flakeBottom'] = $flakeBottom;
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['flakesMax'] = $flakesMax;
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['flakesMaxActive'] = $flakesMaxActive;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['followMouse'] = $followMouse;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['freezeOnBlur'] = $freezeOnBlur;
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['snowColor'] = $snowColor;
 }

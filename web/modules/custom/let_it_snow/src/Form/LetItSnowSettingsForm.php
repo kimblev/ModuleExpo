@@ -55,7 +55,7 @@ class LetItSnowSettingsForm extends ConfigFormBase {
               ->t('*Most values will acquire a default value if left blank or an invalid value is entered.')
         ];
         $form['snow_settings']['properties']['animationInterval'] = [
-            '#type' => 'textfield',
+            '#type' => 'number',
             '#title' => $this
                 ->t('Animation interval'),
             '#description' => $this
@@ -64,7 +64,7 @@ class LetItSnowSettingsForm extends ConfigFormBase {
             '#default_value' => $animationInterval ?: 33,
         ];
         $form['snow_settings']['properties']['flakeBottom'] = [
-            '#type' => 'textfield',
+            '#type' => 'number',
             '#title' => $this
                 ->t('Flake bottom'),
             '#description' => $this
@@ -74,7 +74,7 @@ class LetItSnowSettingsForm extends ConfigFormBase {
             '#default_value' => $flakeBottom ?: '',
         ];
         $form['snow_settings']['properties']['flakesMax'] = [
-            '#type' => 'textfield',
+            '#type' => 'number',
             '#title' => $this
                 ->t('Flakes max'),
             '#description' => $this
@@ -83,13 +83,33 @@ class LetItSnowSettingsForm extends ConfigFormBase {
             '#default_value' => $flakesMax ?: 128,
         ];
         $form['snow_settings']['properties']['flakesMaxActive'] = [
-            '#type' => 'textfield',
+            '#type' => 'number',
             '#title' => $this
                 ->t('Flakes max active'),
             '#description' => $this
                 ->t('Sets the limit of "falling" snowflakes (ie. moving on the screen, thus 
                 considered to be active.)'),
             '#default_value' => $flakesMaxActive ?: 64,
+        ];
+        $form['snow_settings']['properties']['followMouse'] = [
+            '#type' => 'radios',
+            '#title' => $this
+                ->t('Follow mouse'),
+            '#description' => $this
+                ->t('Allows snow to move dynamically with the "wind", relative to the mouse\'s X (left/right) coordinates.'),
+            '#default_value' => $followMouse ?: 1,
+            '#options' => [
+                1 => $this->t('True'),
+                0 => $this->t('False'),
+            ]
+        ];
+        $form['snow_settings']['properties']['freezeOnBlur'] = [
+            '#type' => 'textfield',
+            '#title' => $this
+                ->t('Freeze on blur'),
+            '#description' => $this
+                ->t('Stops the snow effect when the browser window goes out of focus, eg., user is in another tab. Saves CPU, nicer to user.'),
+            '#default_value' => $freezeOnBlur ?: true,
         ];
         $form['snow_settings']['properties']['snowColor'] = [
             '#type' => 'textfield',

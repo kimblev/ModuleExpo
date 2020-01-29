@@ -8,6 +8,8 @@
   snowStorm.flakeBottom = drupalSettings.letItSnow.letItSnowConfig.flakeBottom;
   snowStorm.flakesMax = drupalSettings.letItSnow.letItSnowConfig.flakesMax;
   snowStorm.flakesMaxActive = drupalSettings.letItSnow.letItSnowConfig.flakesMaxActive;
+  snowStorm.followMouse = drupalSettings.letItSnow.letItSnowConfig.followMouse;
+  snowStorm.freezeOnBlur = drupalSettings.letItSnow.letItSnowConfig.freezeOnBlur;
 
   snowStorm.snowColor = drupalSettings.letItSnow.letItSnowConfig.snowColor;
   
