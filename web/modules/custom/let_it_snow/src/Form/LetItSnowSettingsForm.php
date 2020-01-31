@@ -24,8 +24,9 @@ class LetItSnowSettingsForm extends ConfigFormBase {
         $flakesMaxActive = $snow_config->get('flakesMaxActive');
         $followMouse = $snow_config->get('followMouse');
         $freezeOnBlur = $snow_config->get('freezeOnBlur');      
-
         $snowColor = $snow_config->get('snowColor');
+        $snowStick = $snow_config->get('snowStick');
+        $useTwinkleEffect = $snow_config->get('useTwinkleEffect');
         
         $form['snow_settings'] = [
             '#type' => 'fieldset',
@@ -120,9 +121,28 @@ class LetItSnowSettingsForm extends ConfigFormBase {
                 ->t("Don't eat (or use?) yellow snow."),
             '#default_value' => $snowColor ?: '#fff',
         ];
+        $form['snow_settings']['properties']['snowStick'] = [
+            '#type' => 'checkbox',
+            '#title' => $this
+                ->t('Snow stick'),
+            '#description' => $this
+                ->t('Allows the snow to "stick" to the bottom of the window. 
+                     When off, snow will never sit at the bottom.'),
+            '#default_value' => $snowStick,
+            '#return_value' => t('true'),
+        ];
+        $form['snow_settings']['properties']['useTwinkleEffect'] = [
+            '#type' => 'checkbox',
+            '#title' => $this
+                ->t('Use twinkle effect'),
+            '#description' => $this
+                ->t('Allow snow to randomly "flicker" in and out of view while falling.'),
+            '#default_value' => $useTwinkleEffect,
+            '#return_value' => t('true'),
+        ];
         return parent::buildForm($form, $form_state);
     }
- 
+    
     public function submitForm(array &$form, FormStateInterface $form_state) {
         $values = $form_state->getValues();
         $this->config('let_it_snow.settings')
@@ -135,6 +155,8 @@ class LetItSnowSettingsForm extends ConfigFormBase {
           ->set('followMouse', $values['followMouse'])
           ->set('freezeOnBlur', $values['freezeOnBlur'])
           ->set('snowColor', $values['snowColor'])
+          ->set('snowStick', $values['snowStick'])
+          ->set('useTwinkleEffect', $values['useTwinkleEffect'])
           ->save();
     }
 }

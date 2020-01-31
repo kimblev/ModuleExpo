@@ -11,8 +11,8 @@
   snowStorm.flakesMaxActive = drupalSettings.letItSnow.letItSnowConfig.flakesMaxActive;
   snowStorm.followMouse = drupalSettings.letItSnow.letItSnowConfig.followMouse;
   snowStorm.freezeOnBlur = drupalSettings.letItSnow.letItSnowConfig.freezeOnBlur;
-
   snowStorm.snowColor = drupalSettings.letItSnow.letItSnowConfig.snowColor;
+  snowStorm.snowStick = drupalSettings.letItSnow.letItSnowConfig.snowStick;
+  snowStorm.useTwinkleEffect = drupalSettings.letItSnow.letItSnowConfig.useTwinkleEffect;
   
 }(jQuery, Drupal, drupalSettings));
-console.log(snowStorm.followMouse);

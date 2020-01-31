@@ -16,7 +16,9 @@ function let_it_snow_help($route_name, RouteMatchInterface $route_match) {
     case 'help.page.let_it_snow':
       $output = '';
       $output .= '<h3>' . t('About') . '</h3>';
-      $output .= '<p>' . t('Let It Snow is a JavaScript-driven snow effect module that can be easily added to web pages. It uses and is dependent upon snowstorm.js written and maintained by Scott Schiller (schillmania.com). No images are used for the snow effect.') . '</p>';
+      $output .= '<p>' . t('Let It Snow is a JavaScript-driven snow effect module that can be 
+      easily added to web pages. It uses and is dependent upon snowstorm.js written and maintained 
+      by Scott Schiller (schillmania.com). No images are used for the snow effect.') . '</p>';
       return $output;
 
     default:
@@ -50,7 +52,9 @@ function let_it_snow_page_attachments(array &$page) {
   $followMouse = $snow_config->get('followMouse');
   $freezeOnBlur = $snow_config->get('freezeOnBlur');
   $snowColor = $snow_config->get('snowColor');
-
+  $snowStick = $snow_config->get('snowStick');
+  $useTwinkleEffect = $snow_config->get('useTwinkleEffect');
+  
   if ($autoStart == true) {
     $page['#attached']['library'][] = 'let_it_snow/let_it_snow';
     $page['#attached']['library'][] = 'let_it_snow/let_it_snow_config';
@@ -66,4 +70,6 @@ function let_it_snow_page_attachments(array &$page) {
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['followMouse'] = $followMouse;
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['freezeOnBlur'] = $freezeOnBlur;
   $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['snowColor'] = $snowColor;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['snowStick'] = $snowStick;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['useTwinkleEffect'] = $useTwinkleEffect;
 }
