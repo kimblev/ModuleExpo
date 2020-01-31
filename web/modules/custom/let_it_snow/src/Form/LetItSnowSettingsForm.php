@@ -22,6 +22,9 @@ class LetItSnowSettingsForm extends ConfigFormBase {
         $flakeBottom = $snow_config->get('flakeBottom');
         $flakesMax = $snow_config->get('flakesMax');
         $flakesMaxActive = $snow_config->get('flakesMaxActive');
+        $followMouse = $snow_config->get('followMouse');
+        $freezeOnBlur = $snow_config->get('freezeOnBlur');      
+
         $snowColor = $snow_config->get('snowColor');
         
         $form['snow_settings'] = [
@@ -92,24 +95,22 @@ class LetItSnowSettingsForm extends ConfigFormBase {
             '#default_value' => $flakesMaxActive ?: 64,
         ];
         $form['snow_settings']['properties']['followMouse'] = [
-            '#type' => 'radios',
+            '#type' => 'checkbox',
             '#title' => $this
                 ->t('Follow mouse'),
             '#description' => $this
                 ->t('Allows snow to move dynamically with the "wind", relative to the mouse\'s X (left/right) coordinates.'),
-            '#default_value' => $followMouse ?: 1,
-            '#options' => [
-                1 => $this->t('True'),
-                0 => $this->t('False'),
-            ]
+            '#default_value' => $followMouse,
+            '#return_value' => t('true'),
         ];
         $form['snow_settings']['properties']['freezeOnBlur'] = [
-            '#type' => 'textfield',
+            '#type' => 'checkbox',
             '#title' => $this
                 ->t('Freeze on blur'),
             '#description' => $this
                 ->t('Stops the snow effect when the browser window goes out of focus, eg., user is in another tab. Saves CPU, nicer to user.'),
-            '#default_value' => $freezeOnBlur ?: true,
+            '#default_value' => $freezeOnBlur,
+            '#return_value' => t('true'),
         ];
         $form['snow_settings']['properties']['snowColor'] = [
             '#type' => 'textfield',
@@ -131,6 +132,8 @@ class LetItSnowSettingsForm extends ConfigFormBase {
           ->set('flakeBottom', $values['flakeBottom'])
           ->set('flakesMax', $values['flakesMax'])
           ->set('flakesMaxActive', $values['flakesMaxActive'])
+          ->set('followMouse', $values['followMouse'])
+          ->set('freezeOnBlur', $values['freezeOnBlur'])
           ->set('snowColor', $values['snowColor'])
           ->save();
     }

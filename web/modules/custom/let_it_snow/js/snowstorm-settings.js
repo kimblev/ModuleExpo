@@ -1,6 +1,7 @@
 (function ($, Drupal, drupalSettings) {
   
-  // Cannot make null with any default value so setting value only if one exists.
+  // Cannot make 'null' with any default value so setting value 
+  // only if a form value has been entered.
   if (drupalSettings.letItSnow.letItSnowConfig.targetElement != '') {
     snowStorm.targetElement = drupalSettings.letItSnow.letItSnowConfig.targetElement;
   }
@@ -14,4 +15,4 @@
   snowStorm.snowColor = drupalSettings.letItSnow.letItSnowConfig.snowColor;
   
 }(jQuery, Drupal, drupalSettings));
-console.log(snowStorm.targetElement);
+console.log(snowStorm.followMouse);
