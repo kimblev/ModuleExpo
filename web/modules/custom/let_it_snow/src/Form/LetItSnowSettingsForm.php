@@ -50,6 +50,10 @@ class LetItSnowSettingsForm extends ConfigFormBase {
             '#title' => $this
               ->t('Enter a target element'),
              '#default_value' => $targetElement,
+             '#description' => $this
+              ->t('An HTML element which snow will be appended to (default: document body.) 
+                  Can be an element ID string eg. \'myDiv\', or a DOM node reference. See relative 
+                  and absolute-positioned examples.')
         ];
         $form['snow_settings']['properties'] = [
             '#type' => 'fieldset',
