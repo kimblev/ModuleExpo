@@ -1,0 +1,5 @@
+name: 'Palindrome test'
+type: module
+description: 'Test if a word is a palindrome (spelled the same frontwards or backwards).'
+core: 8.x
+package: 'Custom'
