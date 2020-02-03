@@ -1,0 +1,6 @@
+name: 'Let it snow'
+type: module
+description: 'Snowstorm is a JavaScript-driven snow effect that can be easily added to web pages. It uses and is dependent on snowstorm.js created and maintained by Scott Schiller (schillmania.com). No images are used for the snow effect.'
+core: 8.x
+package: 'Custom'
+configure: let_it_snow.settings

@@ -1,0 +1,75 @@
+<?php
+
+/**
+ * @file
+ * Contains let_it_snow.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function let_it_snow_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the let_it_snow module.
+    case 'help.page.let_it_snow':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('Let It Snow is a JavaScript-driven snow effect module that can be 
+      easily added to web pages. It uses and is dependent upon snowstorm.js written and maintained 
+      by Scott Schiller (schillmania.com). No images are used for the snow effect.') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+/*  I don't know where this came from ???
+function let_it_snow_theme() {
+  return [
+    'let_it_snow' => [
+      'render element' => 'children',
+    ],
+  ];
+}*/
+
+/**
+ * Implements hook_page_attachments().
+ */
+function let_it_snow_page_attachments(array &$page) {
+ 
+  $snow_config = \Drupal::config('let_it_snow.settings');
+  $autoStart = $snow_config->get('autoStart');
+  $targetElement = $snow_config->get('targetElement');
+  $animationInterval = $snow_config->get('animationInterval');
+  $flakeBottom = $snow_config->get('flakeBottom');
+  $flakesMax = $snow_config->get('flakesMax');
+  $flakesMaxActive = $snow_config->get('flakesMaxActive');
+  $followMouse = $snow_config->get('followMouse');
+  $freezeOnBlur = $snow_config->get('freezeOnBlur');
+  $snowColor = $snow_config->get('snowColor');
+  $snowStick = $snow_config->get('snowStick');
+  $useTwinkleEffect = $snow_config->get('useTwinkleEffect');
+  
+  if ($autoStart == true) {
+    $page['#attached']['library'][] = 'let_it_snow/let_it_snow';
+    $page['#attached']['library'][] = 'let_it_snow/let_it_snow_config';
+  } else {
+    return false;
+  }
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['autoStart'] = $autoStart;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['targetElement'] = $targetElement;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['animationInterval'] = $animationInterval;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['flakeBottom'] = $flakeBottom;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['flakesMax'] = $flakesMax;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['flakesMaxActive'] = $flakesMaxActive;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['followMouse'] = $followMouse;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['freezeOnBlur'] = $freezeOnBlur;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['snowColor'] = $snowColor;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['snowStick'] = $snowStick;
+  $page['#attached']['drupalSettings']['letItSnow']['letItSnowConfig']['useTwinkleEffect'] = $useTwinkleEffect;
+}
