@@ -38,7 +38,13 @@ INSTALLATION
 CONFIGURATION
 -------------
 
-TODO: ADD CONFIG TO /admin/config detail config here.
+ * Configure the user permissions in Administration » People » Permissions:
+
+   - Administer Let It Snow
+
+ * Customize Let It Snow settings in Administration » Configuration » Let it snow:
+
+   - admin/config/let_it_snow
 
 
 MAINTAINERS
